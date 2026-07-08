@@ -1,0 +1,30 @@
+---
+import BrandLogoMarquee from "./BrandLogoMarquee";
+
+const logos = [
+  { alt: "Aerostreet", src: "/images/brands/aerostreet.webp" },
+  { alt: "Airprotec", src: "/images/brands/airprotec.webp" },
+  { alt: "Arei", src: "/images/brands/arei.webp" },
+  { alt: "Avtech", src: "/images/brands/avtech.webp" },
+  { alt: "Consina", src: "/images/brands/consina.webp" },
+  { alt: "Decathlon", src: "/images/brands/decathlon.webp" },
+  { alt: "Eiger", src: "/images/brands/eiger.webp" },
+  { alt: "Forester", src: "/images/brands/forester.webp" },
+  { alt: "Outfrai", src: "/images/brands/outfrai.webp" },
+  { alt: "Tendaki", src: "/images/brands/tendaki.webp" },
+];
+---
+
+<section id="equipment-brands" class="bg-white px-6 py-8 sm:px-8 sm:py-9 lg:px-10 lg:py-10">
+  <div class="mx-auto max-w-[1240px]">
+    <div class="text-center">
+      <h2 class="text-[clamp(20px,2vw,26px)] font-medium tracking-[0.03em] text-[#a7adb5]">
+        Peralatan dari brand outdoor pilihan
+      </h2>
+    </div>
+
+    <div class="mt-7 sm:mt-8">
+      <BrandLogoMarquee client:load logos={logos} />
+    </div>
+  </div>
+</section>

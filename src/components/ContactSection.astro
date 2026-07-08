@@ -1,0 +1,286 @@
+---
+const mapsUrl = "https://maps.app.goo.gl/Mdm29S5L1sf4Rc239";
+
+const footerColumns = [
+  {
+    title: "About",
+    links: [
+      { href: "#home", label: "Avia Story" },
+      { href: "#solutions", label: "Solutions" },
+      { href: "#how-it-works", label: "Flow Event" },
+      { href: "#contact", label: "Contact Us" },
+    ],
+  },
+  {
+    title: "Solutions",
+    links: [
+      { href: "#solutions", label: "Corporate Outing" },
+      { href: "#solutions", label: "School Camp" },
+      { href: "#solutions", label: "Community Gathering" },
+      { href: "#equipment-brands", label: "Equipment Partner" },
+      { href: "#scroll-frame-gallery", label: "Gallery" },
+    ],
+  },
+  {
+    title: "Markets",
+    links: [
+      { href: "#solutions", label: "Company Event" },
+      { href: "#solutions", label: "School Program" },
+      { href: "#solutions", label: "Community" },
+      { href: "#solutions", label: "Event Organizer" },
+      { href: mapsUrl, label: "Google Maps", external: true },
+    ],
+  },
+];
+---
+
+<footer id="contact" class="footer-contact bg-avia-black px-5 text-white sm:px-8 lg:px-10">
+  <div class="mx-auto grid w-full max-w-[1280px] gap-12 py-16 sm:py-18 lg:grid-cols-[0.95fr_1.55fr] lg:gap-20 lg:py-20">
+    <div>
+      <a
+        href="#home"
+        class="font-heading text-[clamp(2.7rem,4.6vw,4.8rem)] leading-[0.82] font-black uppercase tracking-[-0.045em] text-white"
+      >
+        AVIA OUTDOOR
+      </a>
+
+      <p class="mt-9 max-w-md text-lg leading-tight font-black uppercase text-white/52">
+        Outdoor event support dari brief sampai hari pelaksanaan
+      </p>
+
+      <div class="mt-7 max-w-md text-base leading-7 text-white/48">
+        <p>Jabodetabek & lokasi event sesuai kebutuhan.</p>
+        <p>Corporate outing, school camp, dan community gathering.</p>
+      </div>
+
+      <div class="mt-10 flex gap-3">
+        <a class="footer-contact__social footer-contact__social--instagram" href="#contact" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="5" y="5" width="14" height="14" rx="4"></rect>
+            <circle cx="12" cy="12" r="3.2"></circle>
+            <path d="M16.6 7.6h.01"></path>
+          </svg>
+        </a>
+        <a class="footer-contact__social footer-contact__social--whatsapp" href="#contact" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5.5 18.5 4.35 22l3.65-1A9.2 9.2 0 1 0 5.5 18.5Z"></path>
+            <path d="M8.9 8.55c.18-.42.38-.44.7-.44h.54c.22 0 .5.04.68.5l.76 1.82c.13.31.1.58-.12.85l-.48.58c-.18.22-.2.42-.04.68.64 1.05 1.56 1.94 2.68 2.58.26.15.48.13.7-.08l.64-.62c.24-.23.5-.29.82-.14l1.88.88c.38.18.48.42.44.74-.08.75-.68 1.5-1.34 1.69-1.02.29-3.48-.14-5.7-2.26-2.15-2.05-2.9-4.38-2.66-5.46.1-.44.32-.94.5-1.32Z"></path>
+          </svg>
+        </a>
+        <a class="footer-contact__social footer-contact__social--maps" href={mapsUrl} target="_blank" rel="noreferrer" aria-label="Google Maps">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="map-green" d="M4 5.4A1.4 1.4 0 0 1 5.4 4H11v8.6L4 19.5V5.4Z"></path>
+            <path class="map-yellow" d="M11 4h4.1L20 8.9v2.7l-9 1V4Z"></path>
+            <path class="map-blue" d="m4 19.5 7-6.9 4.8 7.4H5.4A1.4 1.4 0 0 1 4 18.6v.9Z"></path>
+            <path class="map-gray" d="m11 12.6 9-1V18.6a1.4 1.4 0 0 1-1.4 1.4h-2.8L11 12.6Z"></path>
+            <path class="map-pin" d="M17 4.1a4.3 4.3 0 0 0-4.3 4.3c0 3.4 4.3 7.8 4.3 7.8s4.3-4.4 4.3-7.8A4.3 4.3 0 0 0 17 4.1Z"></path>
+            <circle class="map-pin-hole" cx="17" cy="8.4" r="1.35"></circle>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="grid gap-10 sm:grid-cols-3 lg:pt-1">
+      {
+        footerColumns.map((column) => (
+          <nav aria-label={column.title}>
+            <h2 class="text-lg font-black text-white">{column.title}</h2>
+            <ul class="mt-7 grid gap-4 text-base font-semibold text-white/50" role="list">
+              {column.links.map((item) => (
+                <li>
+                  <a
+                    class="footer-contact__link"
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noreferrer" : undefined}
+                  >
+                    <span class="footer-contact__dot" aria-hidden="true"></span>
+                    <span class="footer-contact__copy">{item.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+    </div>
+
+    <div class="border-t border-white/10 pt-7 text-sm text-white/38 lg:col-span-2">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-wrap gap-x-8 gap-y-3">
+          <a class="footer-contact__link" href="#contact">
+            <span class="footer-contact__dot" aria-hidden="true"></span>
+            <span class="footer-contact__copy">Privacy Policy</span>
+          </a>
+          <a class="footer-contact__link" href="#contact">
+            <span class="footer-contact__dot" aria-hidden="true"></span>
+            <span class="footer-contact__copy">Event Brief Notice</span>
+          </a>
+        </div>
+        <p>© 2026 Avia Outdoor. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-contact {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .footer-contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(circle at 78% 12%, rgba(255, 142, 36, 0.05), transparent 22rem);
+    pointer-events: none;
+  }
+
+  .footer-contact__social {
+    display: inline-flex;
+    height: 3.75rem;
+    width: 3.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #fff;
+    color: #fff;
+    transition:
+      background-color 220ms ease,
+      border-color 220ms ease,
+      box-shadow 220ms ease,
+      transform 220ms ease;
+  }
+
+  .footer-contact__social:hover,
+  .footer-contact__social:focus-visible {
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 16px 34px rgba(255, 142, 36, 0.16);
+    outline: none;
+    transform: translateY(-0.15rem);
+  }
+
+  .footer-contact__social svg {
+    height: 2.25rem;
+    width: 2.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+  }
+
+  .footer-contact__social--instagram {
+    border: 0;
+    background:
+      radial-gradient(circle at 31% 108%, #fdf497 0 24%, #fd5949 43%, #d6249f 62%, #285aeb 100%);
+  }
+
+  .footer-contact__social--instagram svg {
+    height: 2.05rem;
+    width: 2.05rem;
+    stroke: #fff;
+    stroke-width: 2.1;
+  }
+
+  .footer-contact__social--whatsapp {
+    border: 0;
+    background: #25d366;
+  }
+
+  .footer-contact__social--whatsapp svg {
+    height: 2.3rem;
+    width: 2.3rem;
+    fill: #25d366;
+    stroke: #fff;
+    stroke-width: 1.45;
+  }
+
+  .footer-contact__social--whatsapp svg path:first-child {
+    fill: none;
+    stroke-width: 1.8;
+  }
+
+  .footer-contact__social--whatsapp svg path:last-child {
+    fill: #fff;
+    stroke: none;
+  }
+
+  .footer-contact__social--maps svg {
+    height: 2.55rem;
+    width: 2.55rem;
+    stroke: none;
+  }
+
+  .footer-contact__social--maps .map-green {
+    fill: #00a86b;
+  }
+
+  .footer-contact__social--maps .map-yellow {
+    fill: #fbbc04;
+  }
+
+  .footer-contact__social--maps .map-blue {
+    fill: #1a73e8;
+  }
+
+  .footer-contact__social--maps .map-gray {
+    fill: #d9d9d9;
+  }
+
+  .footer-contact__social--maps .map-pin {
+    fill: #ff3b30;
+  }
+
+  .footer-contact__social--maps .map-pin-hole {
+    fill: #9e1b1b;
+  }
+
+  .footer-contact__link {
+    position: relative;
+    display: inline-flex;
+    width: fit-content;
+    color: inherit;
+    transition: color 220ms ease;
+  }
+
+  .footer-contact__link:hover,
+  .footer-contact__link:focus-visible {
+    color: rgba(255, 255, 255, 0.92);
+    outline: none;
+  }
+
+  .footer-contact__copy {
+    display: block;
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .footer-contact__dot {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 0.62rem;
+    width: 0.62rem;
+    border-radius: 999px;
+    background: var(--avia-orange);
+    opacity: 0;
+    transform: translate(-0.35rem, -50%) scale(0.72);
+    transition:
+      opacity 220ms ease,
+      transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .footer-contact__link:hover .footer-contact__dot,
+  .footer-contact__link:focus-visible .footer-contact__dot {
+    opacity: 1;
+    transform: translate(0, -50%) scale(1);
+  }
+
+  .footer-contact__link:hover .footer-contact__copy,
+  .footer-contact__link:focus-visible .footer-contact__copy {
+    transform: translateX(1.05rem);
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const publicImagesDir = fileURLToPath(new URL("../../public/images", import.meta.url));
+
+const cards = [
+  {
+    title: "Hiking",
+    imagePath: "/images/card-hiking.webp",
+    fileName: "card-hiking.webp",
+    placeholder: "from-[#f7ede2] via-[#efe0cf] to-[#d8c4ad]",
+  },
+  {
+    title: "Camping Ceria",
+    imagePath: "/images/card-camping-ceria.webp",
+    fileName: "card-camping-ceria.webp",
+    placeholder: "from-[#f2ede5] via-[#ddd5ca] to-[#bbb09e]",
+  },
+  {
+    title: "Outbound",
+    imagePath: "/images/card-outbound.webp",
+    fileName: "card-outbound.webp",
+    placeholder: "from-[#ece6dc] via-[#d8d0c3] to-[#b6ab99]",
+  },
+].map((card) => ({
+  ...card,
+  hasImage: fs.existsSync(path.join(publicImagesDir, card.fileName)),
+}));
+---
+
+<section
+  id="solutions"
+  data-next-panel
+  class="next-panel relative z-20 min-h-[100svh] scroll-mt-32 rounded-t-[32px] bg-white px-5 pt-16 shadow-[0_-14px_36px_rgba(4,4,4,0.05)] sm:px-8 sm:pt-20 lg:px-10 lg:pt-28 xl:pt-32"
+>
+  <div class="mx-auto max-w-[1280px] pb-16 sm:pb-20 lg:pb-24">
+    <div class="mx-auto max-w-[1040px] text-center">
+      <h2 class="font-heading text-[clamp(48px,5vw,84px)] leading-[0.92] font-black uppercase tracking-[0.015em] text-avia-black">
+        <span class="block text-avia-orange">Temukan Solusi</span>
+        <span class="block text-avia-black">Yang Tepat Untuk Anda</span>
+      </h2>
+    </div>
+
+    <div class="mx-auto mt-14 grid max-w-[1240px] gap-7 md:mt-16 md:grid-cols-2 lg:mt-20 xl:grid-cols-3 xl:gap-8">
+      {
+        cards.map((card) => (
+          <article class="group h-full">
+            <div class="h-[440px] overflow-hidden rounded-[32px] bg-white shadow-[0_18px_36px_rgba(4,4,4,0.08)] ring-1 ring-black/6 transition duration-[240ms] ease-out will-change-transform group-hover:scale-[0.97] sm:h-[480px] md:h-[530px] xl:h-[600px]">
+              <div class="relative h-full overflow-hidden">
+                {
+                  card.hasImage ? (
+                    <img
+                      src={card.imagePath}
+                      alt={card.title}
+                      class="h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <div
+                      class:list={[
+                        "h-full w-full bg-gradient-to-br",
+                        card.placeholder,
+                      ]}
+                    ></div>
+                  )
+                }
+
+                <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.72)_0%,rgba(255,255,255,0.36)_16%,rgba(255,255,255,0)_42%,rgba(255,255,255,0.04)_100%)]"></div>
+
+                <div class="absolute left-7 top-7 sm:left-8 sm:top-8 lg:left-[34px] lg:top-[36px]">
+                  <h3 class="max-w-[180px] text-[30px] leading-[0.95] font-black tracking-[-0.01em] text-avia-black sm:text-[32px] lg:text-[34px]">
+                    {card.title}
+                  </h3>
+                </div>
+
+                <div class="absolute bottom-7 left-7 sm:bottom-8 sm:left-8 lg:bottom-[32px] lg:left-[32px]">
+                  <div class="inline-flex h-[60px] w-[60px] items-center justify-center rounded-[20px] bg-white text-avia-black shadow-[0_10px_24px_rgba(4,4,4,0.10)]">
+                    <svg viewBox="0 0 20 20" fill="none" class="h-5 w-5" aria-hidden="true">
+                      <path
+                        d="M5.5 14.5L14.5 5.5M14.5 5.5H7.75M14.5 5.5V12.25"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.8"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

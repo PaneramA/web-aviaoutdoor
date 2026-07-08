@@ -1,0 +1,388 @@
+---
+const topFrames = [
+  {
+    size: "panorama",
+    src: "/images/scroll-frame-gallery/gallery-08.webp",
+    alt: "Peserta event outdoor berfoto bersama di area hutan pinus",
+    position: "center 44%",
+  },
+  {
+    size: "portrait",
+    src: "/images/scroll-frame-gallery/gallery-12.webp",
+    alt: "Kelompok pendaki berfoto di puncak gunung",
+    position: "center 52%",
+  },
+  {
+    size: "square",
+    src: "/images/scroll-frame-gallery/gallery-10.webp",
+    alt: "Aktivitas kelompok di area hutan",
+    position: "center 48%",
+  },
+  {
+    size: "wide",
+    src: "/images/scroll-frame-gallery/gallery-13.webp",
+    alt: "Deretan tenda merah di area camping",
+    position: "center 48%",
+  },
+  {
+    size: "portrait",
+    src: "/images/scroll-frame-gallery/gallery-03.webp",
+    alt: "Tenda camping orange di area terbuka",
+    position: "center 68%",
+  },
+  {
+    size: "square",
+    src: "/images/scroll-frame-gallery/gallery-04.webp",
+    alt: "Peserta berfoto di depan tenda outdoor",
+    position: "center 58%",
+    scale: 1.34,
+  },
+  {
+    size: "panorama",
+    src: "/images/scroll-frame-gallery/gallery-07.webp",
+    alt: "Peserta berfoto di area Kalisawah Adventure",
+    position: "center 58%",
+  },
+  {
+    size: "wide",
+    src: "/images/scroll-frame-gallery/gallery-01.webp",
+    alt: "Rak perlengkapan outdoor dan camping",
+    position: "center center",
+  },
+];
+
+const bottomFrames = [
+  {
+    size: "square",
+    src: "/images/scroll-frame-gallery/gallery-15.webp",
+    alt: "Anak-anak berkegiatan di area camping hijau",
+    position: "center 56%",
+  },
+  {
+    size: "wide",
+    src: "/images/scroll-frame-gallery/gallery-14.webp",
+    alt: "Tenda camping di area rumput dan pepohonan",
+    position: "center 58%",
+  },
+  {
+    size: "portrait",
+    src: "/images/scroll-frame-gallery/gallery-11.webp",
+    alt: "Peserta menggunakan perlengkapan flying fox",
+    position: "62% 50%",
+  },
+  {
+    size: "square",
+    src: "/images/scroll-frame-gallery/gallery-06.webp",
+    alt: "Peserta beraktivitas air dengan pelampung",
+    position: "center 54%",
+    scale: 1.24,
+  },
+  {
+    size: "panorama",
+    src: "/images/scroll-frame-gallery/gallery-05.webp",
+    alt: "Area camping dengan tenda dan kendaraan di pegunungan",
+    position: "center 58%",
+  },
+  {
+    size: "portrait",
+  },
+  {
+    size: "wide",
+    src: "/images/scroll-frame-gallery/gallery-09.webp",
+    alt: "Aktivitas peserta outdoor di hutan pinus",
+    position: "center 50%",
+  },
+  {
+    size: "wide",
+    src: "/images/scroll-frame-gallery/gallery-02.webp",
+    alt: "Deretan tenda camping di area hutan",
+    position: "center 58%",
+  },
+];
+---
+
+<section
+  id="scroll-frame-gallery"
+  data-scroll-frame-gallery
+  data-next-panel
+  class="scroll-frame-gallery relative z-20 min-h-[190svh] overflow-visible rounded-t-[32px] bg-[#F7F7F4]"
+>
+  <div class="scroll-frame-gallery__surface">
+    <div class="scroll-frame-gallery__stage">
+      <div class="scroll-frame-gallery__viewport">
+        <div class="scroll-frame-gallery__rows flex flex-col">
+          <div class="scroll-frame-gallery__row" data-scroll-frame-row="forward">
+            {
+              topFrames.map((frame) => (
+                <article
+                  class:list={["scroll-frame-gallery__frame", `scroll-frame-gallery__frame--${frame.size}`, !frame.src && "scroll-frame-gallery__frame--empty"]}
+                  aria-label={frame.src ? frame.alt : "Frame gallery kosong"}
+                >
+                  {frame.src ? (
+                    <img
+                      src={frame.src}
+                      alt={frame.alt}
+                      class="scroll-frame-gallery__image"
+                      style={`object-position: ${frame.position ?? "center center"}; --image-scale: ${frame.scale ?? 1};`}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <span class="scroll-frame-gallery__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" class="h-6 w-6">
+                        <path
+                          d="M5.25 18.75H18.75M7.25 15.35L10.1 11.8L12.65 14.7L16.45 9.85L18.75 12.6M7.2 7.35H7.21M6.8 5.25H17.2C18.06 5.25 18.75 5.94 18.75 6.8V17.2C18.75 18.06 18.06 18.75 17.2 18.75H6.8C5.94 18.75 5.25 18.06 5.25 17.2V6.8C5.25 5.94 5.94 5.25 6.8 5.25Z"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.35"
+                        ></path>
+                      </svg>
+                    </span>
+                  )}
+                </article>
+              ))
+            }
+          </div>
+
+          <div class="scroll-frame-gallery__row scroll-frame-gallery__row--lower" data-scroll-frame-row="reverse">
+            {
+              bottomFrames.map((frame) => (
+                <article
+                  class:list={["scroll-frame-gallery__frame", `scroll-frame-gallery__frame--${frame.size}`, !frame.src && "scroll-frame-gallery__frame--empty"]}
+                  aria-label={frame.src ? frame.alt : "Frame gallery kosong"}
+                >
+                  {frame.src ? (
+                    <img
+                      src={frame.src}
+                      alt={frame.alt}
+                      class="scroll-frame-gallery__image"
+                      style={`object-position: ${frame.position ?? "center center"}; --image-scale: ${frame.scale ?? 1};`}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <span class="scroll-frame-gallery__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" class="h-6 w-6">
+                        <path
+                          d="M5.25 18.75H18.75M7.25 15.35L10.1 11.8L12.65 14.7L16.45 9.85L18.75 12.6M7.2 7.35H7.21M6.8 5.25H17.2C18.06 5.25 18.75 5.94 18.75 6.8V17.2C18.75 18.06 18.06 18.75 17.2 18.75H6.8C5.94 18.75 5.25 18.06 5.25 17.2V6.8C5.25 5.94 5.94 5.25 6.8 5.25Z"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.35"
+                        ></path>
+                      </svg>
+                    </span>
+                  )}
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { setupScrollFrameGallery } from "../scripts/scrollFrameGallery";
+
+  setupScrollFrameGallery();
+</script>
+
+<style>
+  .scroll-frame-gallery {
+    box-shadow: 0 -14px 36px rgba(4, 4, 4, 0.04);
+  }
+
+  .scroll-frame-gallery__surface {
+    position: relative;
+    isolation: isolate;
+    min-height: 190svh;
+  }
+
+  .scroll-frame-gallery__surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(255, 142, 36, 0.055), transparent 28%),
+      radial-gradient(circle at 88% 78%, rgba(4, 4, 4, 0.035), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(247, 247, 244, 1));
+  }
+
+  .scroll-frame-gallery__stage {
+    display: flex;
+    --gallery-top-space: clamp(5.25rem, 9vh, 6.6rem);
+    --gallery-bottom-space: clamp(1.6rem, 4vh, 3rem);
+    --gallery-row-gap: clamp(0.6rem, 1vw, 0.95rem);
+    position: sticky;
+    top: 0;
+    min-height: 100svh;
+    height: 100svh;
+    width: 100%;
+    align-items: center;
+    overflow: hidden;
+    padding-block: var(--gallery-top-space) var(--gallery-bottom-space);
+  }
+
+  .scroll-frame-gallery__viewport {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .scroll-frame-gallery__rows {
+    gap: var(--gallery-row-gap);
+  }
+
+  .scroll-frame-gallery__row {
+    display: flex;
+    width: max-content;
+    gap: clamp(0.55rem, 0.95vw, 0.8rem);
+    padding-inline: clamp(0.5rem, 1.2vw, 1.5rem);
+    align-items: stretch;
+    will-change: transform;
+  }
+
+  .scroll-frame-gallery__row--lower {
+    margin-left: calc(-1 * clamp(10rem, 18vw, 22rem));
+  }
+
+  .scroll-frame-gallery__frame {
+    position: relative;
+    display: flex;
+    height: clamp(
+      19rem,
+      calc((100svh - var(--gallery-top-space) - var(--gallery-bottom-space) - var(--gallery-row-gap)) / 2),
+      31rem
+    );
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: clamp(0.9rem, 1.35vw, 1.35rem);
+    border: 1px solid rgba(4, 4, 4, 0.075);
+    background:
+      radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.98), transparent 34%),
+      radial-gradient(circle at 76% 82%, rgba(255, 142, 36, 0.035), transparent 34%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 239, 233, 0.94));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.88),
+      inset 0 -20px 42px rgba(4, 4, 4, 0.035),
+      0 18px 48px rgba(4, 4, 4, 0.07);
+  }
+
+  .scroll-frame-gallery__frame--portrait {
+    aspect-ratio: 0.68 / 1;
+  }
+
+  .scroll-frame-gallery__frame--medium {
+    aspect-ratio: 1.36 / 1;
+  }
+
+  .scroll-frame-gallery__frame--square {
+    aspect-ratio: 1 / 1;
+  }
+
+  .scroll-frame-gallery__frame--wide {
+    aspect-ratio: 1.72 / 1;
+  }
+
+  .scroll-frame-gallery__frame--panorama {
+    aspect-ratio: 2.16 / 1;
+  }
+
+  .scroll-frame-gallery__image {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transform: scale(var(--image-scale, 1)) translateZ(0);
+  }
+
+  .scroll-frame-gallery__frame--empty {
+    background:
+      radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.98), transparent 34%),
+      radial-gradient(circle at 76% 82%, rgba(255, 142, 36, 0.035), transparent 34%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 239, 233, 0.94));
+  }
+
+  .scroll-frame-gallery__frame::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.44), rgba(255, 255, 255, 0));
+    pointer-events: none;
+  }
+
+  .scroll-frame-gallery__icon {
+    position: relative;
+    display: inline-flex;
+    height: 3.6rem;
+    width: 3.6rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.48);
+    color: rgba(255, 142, 36, 0.36);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.72),
+      0 14px 26px rgba(4, 4, 4, 0.045);
+  }
+
+  @media (max-width: 767px) {
+    .scroll-frame-gallery__stage {
+      --gallery-top-space: 5.35rem;
+      --gallery-bottom-space: 1.25rem;
+      --gallery-row-gap: 0.7rem;
+    }
+
+    .scroll-frame-gallery__row {
+      gap: 0.7rem;
+      padding-inline: 0.75rem;
+    }
+
+    .scroll-frame-gallery__row--lower {
+      margin-left: -8rem;
+    }
+
+    .scroll-frame-gallery__frame {
+      height: clamp(
+        13.75rem,
+        calc((100svh - var(--gallery-top-space) - var(--gallery-bottom-space) - var(--gallery-row-gap)) / 2),
+        22rem
+      );
+      border-radius: 1rem;
+    }
+
+    .scroll-frame-gallery__frame--portrait {
+      aspect-ratio: 0.7 / 1;
+    }
+
+    .scroll-frame-gallery__frame--medium {
+      aspect-ratio: 1.26 / 1;
+    }
+
+    .scroll-frame-gallery__frame--square {
+      aspect-ratio: 1 / 1;
+    }
+
+    .scroll-frame-gallery__frame--wide {
+      aspect-ratio: 1.5 / 1;
+    }
+
+    .scroll-frame-gallery__frame--panorama {
+      aspect-ratio: 1.86 / 1;
+    }
+
+    .scroll-frame-gallery__icon {
+      height: 3.2rem;
+      width: 3.2rem;
+      border-radius: 1.05rem;
+    }
+  }
+
+</style>

@@ -1,0 +1,29 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Avia Outdoor | Company Profile",
+  description = "Avia Outdoor menyediakan dukungan perlengkapan camping dan outdoor untuk perusahaan, sekolah, komunitas, dan event organizer.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <slot name="head" />
+  </head>
+  <body class="bg-avia-white text-avia-black antialiased">
+    <main class="relative overflow-x-clip">
+      <slot />
+    </main>
+  </body>
+</html>

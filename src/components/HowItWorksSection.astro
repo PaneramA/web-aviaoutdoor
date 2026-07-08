@@ -1,0 +1,158 @@
+---
+const benefits = [
+  { label: "Praktis", icon: "spark" },
+  { label: "Tepat Waktu", icon: "clock" },
+  { label: "Event-Ready", icon: "flag" },
+];
+
+const benefitIcons = {
+  spark: "M4.75 10.25L7.2 7.8L8.55 3.75L9.9 7.8L12.35 10.25L8.55 11.6L7.2 15.65L5.85 11.6L2.05 10.25H4.75ZM14.8 6.95L15.55 4.7L16.3 6.95L18.55 7.7L16.3 8.45L15.55 10.7L14.8 8.45L12.55 7.7L14.8 6.95ZM14.1 14.15L15.15 11L16.2 14.15L19.35 15.2L16.2 16.25L15.15 19.4L14.1 16.25L10.95 15.2L14.1 14.15Z",
+  clock: "M10 4.1V10L13.9 12.35M18.1 10C18.1 14.47 14.47 18.1 10 18.1C5.53 18.1 1.9 14.47 1.9 10C1.9 5.53 5.53 1.9 10 1.9C14.47 1.9 18.1 5.53 18.1 10Z",
+  flag: "M4 18V3.5M4 4.25H12.6L11.1 7.15L12.6 10.05H4",
+};
+---
+
+<section id="how-it-works" class="how-works-section section-shell bg-[#fbfbf8]">
+  <div class="section-container">
+    <div class="grid gap-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start lg:gap-16 xl:gap-20">
+      <div class="max-w-[680px]">
+        <p class="how-works-label text-xs font-semibold uppercase tracking-[0.28em] text-avia-orange sm:text-sm">
+          Cara Kami Bekerja
+        </p>
+
+        <h2 class="how-works-title mt-4 font-heading font-black uppercase tracking-[0.015em] text-avia-black">
+          <span class="block md:whitespace-nowrap">DARI KEBUTUHAN EVENT</span>
+          <span class="block md:whitespace-nowrap">MENJADI SETUP YANG</span>
+          <span class="block text-avia-orange md:whitespace-nowrap">SIAP DIGUNAKAN</span>
+        </h2>
+
+        <p class="how-works-copy mt-6 max-w-[600px] text-base leading-8 text-avia-gray sm:text-lg">
+          Avia Outdoor membantu menyesuaikan kebutuhan perlengkapan berdasarkan jenis
+          acara, jumlah peserta, lokasi, dan konsep kegiatan agar persiapan outdoor
+          event terasa lebih praktis dan terorganisir.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-avia-charcoal sm:text-[15px]">
+          {
+            benefits.map((item, index) => (
+              <>
+                <div class="inline-flex items-center gap-3">
+                  <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-avia-orange/10 text-avia-orange ring-1 ring-avia-orange/15">
+                    <svg viewBox="0 0 20 20" fill="none" class="h-4.5 w-4.5" aria-hidden="true">
+                      <path
+                        d={benefitIcons[item.icon]}
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.6"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span class="font-medium">{item.label}</span>
+                </div>
+                {index < benefits.length - 1 && (
+                  <span class="hidden h-5 w-px bg-black/10 sm:block" aria-hidden="true"></span>
+                )}
+              </>
+            ))
+          }
+        </div>
+
+        <div class="how-works-photo-placeholder mt-10 overflow-hidden rounded-[30px] bg-white shadow-[0_18px_40px_rgba(4,4,4,0.06)] ring-1 ring-black/8">
+          <img
+            src="/images/how-works-event-group.webp"
+            alt="Peserta outbound berfoto bersama di area hutan pinus."
+            width="1360"
+            height="640"
+            class="h-[250px] w-full object-cover sm:h-[300px] lg:h-[320px]"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <figure class="trail-visual" aria-label="Visual alur kerja Avia Outdoor">
+        <img
+          src="/images/flow-avia-event.webp"
+          alt="Alur kerja Avia Outdoor dari diskusi kebutuhan acara, rekomendasi peralatan, persiapan dan pengecekan, sampai siap digunakan untuk event."
+          width="1280"
+          height="1520"
+          class="trail-visual__image"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how-works-section {
+    position: relative;
+    overflow: clip;
+  }
+
+  .how-works-section::before {
+    content: "";
+    position: absolute;
+    right: -8rem;
+    top: 8rem;
+    height: 24rem;
+    width: 24rem;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(255, 142, 36, 0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .how-works-title {
+    max-width: 660px;
+    font-size: clamp(50px, 4.4vw, 78px);
+    line-height: 0.95;
+  }
+
+  .trail-visual {
+    position: relative;
+    aspect-ratio: 16 / 19;
+    width: 100%;
+    max-width: 640px;
+    margin-top: 2.75rem;
+    margin-left: auto;
+    margin-right: 0;
+    overflow: hidden;
+    justify-self: end;
+  }
+
+  .trail-visual__image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    transform: translateX(4.25%) scale(1.08);
+    transform-origin: center;
+  }
+
+  @media (max-width: 1023px) {
+    .how-works-title {
+      max-width: 660px;
+      font-size: clamp(46px, 8.6vw, 72px);
+    }
+
+    .trail-visual {
+      max-width: 620px;
+      margin-top: 0.5rem;
+      margin-inline: auto;
+      justify-self: center;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .how-works-title {
+      max-width: 100%;
+      font-size: clamp(40px, 11.5vw, 58px);
+      line-height: 0.97;
+    }
+
+    .trail-visual {
+      max-width: 100%;
+    }
+  }
+</style>
