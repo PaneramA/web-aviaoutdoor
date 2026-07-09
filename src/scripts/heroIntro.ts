@@ -17,8 +17,9 @@ export function setupHeroIntro() {
   ScrollTrigger.getById("avia-hero-intro")?.kill();
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const canUseHeroMotion = window.matchMedia("(min-width: 1024px)");
 
-  if (prefersReducedMotion.matches) {
+  if (prefersReducedMotion.matches || !canUseHeroMotion.matches) {
     hero.dataset.motion = "reduced";
     return;
   }
