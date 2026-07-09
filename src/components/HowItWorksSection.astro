@@ -20,7 +20,7 @@ const benefitIcons = {
           Cara Kami Bekerja
         </p>
 
-        <h2 class="how-works-title mt-4 font-heading font-black uppercase tracking-[0.015em] text-avia-black">
+        <h2 class="how-works-title mt-4 font-heading font-black uppercase tracking-[0] text-avia-black">
           <span class="block md:whitespace-nowrap">DARI KEBUTUHAN EVENT</span>
           <span class="block md:whitespace-nowrap">MENJADI SETUP YANG</span>
           <span class="block text-avia-orange md:whitespace-nowrap">SIAP DIGUNAKAN</span>
@@ -106,8 +106,8 @@ const benefitIcons = {
 
   .how-works-title {
     max-width: 660px;
-    font-size: clamp(50px, 4.4vw, 78px);
-    line-height: 0.95;
+    font-size: 2.5rem;
+    line-height: 0.97;
   }
 
   .trail-visual {
@@ -130,10 +130,22 @@ const benefitIcons = {
     transform-origin: center;
   }
 
+  @media (min-width: 640px) {
+    .how-works-title {
+      font-size: 3.75rem;
+      line-height: 0.95;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .how-works-title {
+      font-size: 4.875rem;
+    }
+  }
+
   @media (max-width: 1023px) {
     .how-works-title {
       max-width: 660px;
-      font-size: clamp(46px, 8.6vw, 72px);
     }
 
     .trail-visual {
@@ -147,8 +159,6 @@ const benefitIcons = {
   @media (max-width: 767px) {
     .how-works-title {
       max-width: 100%;
-      font-size: clamp(40px, 11.5vw, 58px);
-      line-height: 0.97;
     }
 
     .trail-visual {

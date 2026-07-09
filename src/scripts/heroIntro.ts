@@ -6,9 +6,9 @@ gsap.registerPlugin(ScrollTrigger);
 export function setupHeroIntro() {
   const hero = document.querySelector<HTMLElement>("[data-hero-root]");
   const content = document.querySelector<HTMLElement>("[data-hero-content]");
-  const nextPanel = document.querySelector<HTMLElement>("[data-next-panel]");
+  const image = document.querySelector<HTMLElement>("[data-hero-image]");
 
-  if (!hero || !content || !nextPanel || hero.dataset.heroIntroInitialized === "true") {
+  if (!hero || !content || hero.dataset.heroIntroInitialized === "true") {
     return;
   }
 
@@ -27,7 +27,10 @@ export function setupHeroIntro() {
 
   const context = gsap.context(() => {
     gsap.set(content, { y: 0, opacity: 1 });
-    gsap.set(nextPanel, { yPercent: 100 });
+
+    if (image) {
+      gsap.set(image, { scale: 1.02, y: 0 });
+    }
 
     const timeline = gsap.timeline({
       defaults: { ease: "none" },
@@ -35,16 +38,17 @@ export function setupHeroIntro() {
         id: "avia-hero-intro",
         trigger: hero,
         start: "top top",
-        end: "+=100%",
+        end: "bottom top",
         scrub: 0.8,
-        pin: true,
-        anticipatePin: 1,
+        invalidateOnRefresh: true,
       },
     });
 
-    timeline
-      .to(content, { y: -120, opacity: 0, duration: 1 }, 0)
-      .to(nextPanel, { yPercent: 0, duration: 1 }, 0);
+    timeline.to(content, { y: -72, opacity: 0.28, duration: 1 }, 0);
+
+    if (image) {
+      timeline.to(image, { y: 44, scale: 1.08, duration: 1 }, 0);
+    }
   });
 
   const handleReducedMotionChange = (event: MediaQueryListEvent) => {

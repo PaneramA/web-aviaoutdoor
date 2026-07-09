@@ -49,6 +49,12 @@ const topFrames = [
     alt: "Rak perlengkapan outdoor dan camping",
     position: "center center",
   },
+  {
+    size: "panorama",
+    src: "/images/scroll-frame-gallery/gallery-16.webp",
+    alt: "Deretan tenda camping di lapangan rumput saat sore hari",
+    position: "center 52%",
+  },
 ];
 
 const bottomFrames = [
@@ -84,7 +90,10 @@ const bottomFrames = [
     position: "center 58%",
   },
   {
-    size: "portrait",
+    size: "wide",
+    src: "/images/scroll-frame-gallery/gallery-17.webp",
+    alt: "Keluarga dan komunitas menikmati camping bersama di antara tenda orange",
+    position: "center 58%",
   },
   {
     size: "wide",
@@ -98,14 +107,37 @@ const bottomFrames = [
     alt: "Deretan tenda camping di area hutan",
     position: "center 58%",
   },
+  {
+    size: "panorama",
+    src: "/images/scroll-frame-gallery/gallery-18.webp",
+    alt: "Siswa berkumpul di area camping dengan deretan tenda biru",
+    position: "center 54%",
+  },
+  {
+    size: "wide",
+    src: "/images/scroll-frame-gallery/gallery-17.webp",
+    alt: "Keluarga dan komunitas menikmati camping bersama di antara tenda orange",
+    position: "center 58%",
+  },
+  {
+    size: "panorama",
+    src: "/images/scroll-frame-gallery/gallery-16.webp",
+    alt: "Deretan tenda camping di lapangan rumput saat sore hari",
+    position: "center 52%",
+  },
+  {
+    size: "wide",
+    src: "/images/scroll-frame-gallery/gallery-05.webp",
+    alt: "Area camping dengan tenda dan kendaraan di pegunungan",
+    position: "center 58%",
+  },
 ];
 ---
 
 <section
   id="scroll-frame-gallery"
   data-scroll-frame-gallery
-  data-next-panel
-  class="scroll-frame-gallery relative z-20 min-h-[190svh] overflow-visible rounded-t-[32px] bg-[#F7F7F4]"
+  class="scroll-frame-gallery relative z-20 min-h-[290svh] overflow-visible rounded-t-[32px] bg-[#F7F7F4]"
 >
   <div class="scroll-frame-gallery__surface">
     <div class="scroll-frame-gallery__stage">
@@ -113,7 +145,7 @@ const bottomFrames = [
         <div class="scroll-frame-gallery__rows flex flex-col">
           <div class="scroll-frame-gallery__row" data-scroll-frame-row="forward">
             {
-              topFrames.map((frame) => (
+              topFrames.map((frame, index) => (
                 <article
                   class:list={["scroll-frame-gallery__frame", `scroll-frame-gallery__frame--${frame.size}`, !frame.src && "scroll-frame-gallery__frame--empty"]}
                   aria-label={frame.src ? frame.alt : "Frame gallery kosong"}
@@ -124,8 +156,9 @@ const bottomFrames = [
                       alt={frame.alt}
                       class="scroll-frame-gallery__image"
                       style={`object-position: ${frame.position ?? "center center"}; --image-scale: ${frame.scale ?? 1};`}
-                      loading="lazy"
+                      loading={index < 2 ? "eager" : "lazy"}
                       decoding="async"
+                      fetchpriority={index < 2 ? "low" : "auto"}
                     />
                   ) : (
                     <span class="scroll-frame-gallery__icon" aria-hidden="true">
@@ -147,7 +180,7 @@ const bottomFrames = [
 
           <div class="scroll-frame-gallery__row scroll-frame-gallery__row--lower" data-scroll-frame-row="reverse">
             {
-              bottomFrames.map((frame) => (
+              bottomFrames.map((frame, index) => (
                 <article
                   class:list={["scroll-frame-gallery__frame", `scroll-frame-gallery__frame--${frame.size}`, !frame.src && "scroll-frame-gallery__frame--empty"]}
                   aria-label={frame.src ? frame.alt : "Frame gallery kosong"}
@@ -158,8 +191,9 @@ const bottomFrames = [
                       alt={frame.alt}
                       class="scroll-frame-gallery__image"
                       style={`object-position: ${frame.position ?? "center center"}; --image-scale: ${frame.scale ?? 1};`}
-                      loading="lazy"
+                      loading={index < 2 ? "eager" : "lazy"}
                       decoding="async"
+                      fetchpriority={index < 2 ? "low" : "auto"}
                     />
                   ) : (
                     <span class="scroll-frame-gallery__icon" aria-hidden="true">
@@ -198,7 +232,7 @@ const bottomFrames = [
   .scroll-frame-gallery__surface {
     position: relative;
     isolation: isolate;
-    min-height: 190svh;
+    min-height: 290svh;
   }
 
   .scroll-frame-gallery__surface::before {
@@ -261,7 +295,7 @@ const bottomFrames = [
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-radius: clamp(0.9rem, 1.35vw, 1.35rem);
+    border-radius: 1.25rem;
     border: 1px solid rgba(4, 4, 4, 0.075);
     background:
       radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.98), transparent 34%),
@@ -334,28 +368,58 @@ const bottomFrames = [
   }
 
   @media (max-width: 767px) {
+    .scroll-frame-gallery {
+      min-height: auto;
+      border-top-left-radius: 1.5rem;
+      border-top-right-radius: 1.5rem;
+      overflow: hidden;
+    }
+
+    .scroll-frame-gallery__surface {
+      min-height: auto;
+      padding-block: 3.5rem;
+    }
+
     .scroll-frame-gallery__stage {
       --gallery-top-space: 5.35rem;
       --gallery-bottom-space: 1.25rem;
       --gallery-row-gap: 0.7rem;
+      position: relative;
+      height: auto;
+      min-height: auto;
+      overflow: visible;
+      padding-block: 0;
+    }
+
+    .scroll-frame-gallery__viewport {
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .scroll-frame-gallery__viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scroll-frame-gallery__rows {
+      gap: 0.8rem;
     }
 
     .scroll-frame-gallery__row {
       gap: 0.7rem;
       padding-inline: 0.75rem;
+      scroll-snap-type: x proximity;
     }
 
     .scroll-frame-gallery__row--lower {
-      margin-left: -8rem;
+      margin-left: 0;
     }
 
     .scroll-frame-gallery__frame {
-      height: clamp(
-        13.75rem,
-        calc((100svh - var(--gallery-top-space) - var(--gallery-bottom-space) - var(--gallery-row-gap)) / 2),
-        22rem
-      );
+      height: 13.5rem;
       border-radius: 1rem;
+      scroll-snap-align: start;
     }
 
     .scroll-frame-gallery__frame--portrait {

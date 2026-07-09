@@ -1,6 +1,4 @@
 ---
-import BrandLogoMarquee from "./BrandLogoMarquee";
-
 const logos = [
   { alt: "Aerostreet", src: "/images/brands/aerostreet.webp" },
   { alt: "Airprotec", src: "/images/brands/airprotec.webp" },
@@ -18,13 +16,132 @@ const logos = [
 <section id="equipment-brands" class="bg-white px-6 py-8 sm:px-8 sm:py-9 lg:px-10 lg:py-10">
   <div class="mx-auto max-w-[1240px]">
     <div class="text-center">
-      <h2 class="text-[clamp(20px,2vw,26px)] font-medium tracking-[0.03em] text-[#a7adb5]">
+      <h2 class="equipment-brands__title font-medium tracking-[0.03em] text-[#a7adb5]">
         Peralatan dari brand outdoor pilihan
       </h2>
     </div>
 
-    <div class="mt-7 sm:mt-8">
-      <BrandLogoMarquee client:load logos={logos} />
+    <div class="equipment-brands__marquee mt-7 sm:mt-8" aria-label="Brand outdoor pilihan">
+      <div class="equipment-brands__track">
+        {
+          [0, 1].map((groupIndex) => (
+            <div class="equipment-brands__group" aria-hidden={groupIndex === 1}>
+              {logos.map((logo) => (
+                <div class="equipment-brands__logo">
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+              ))}
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .equipment-brands__title {
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+
+  .equipment-brands__marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.96) 8%, rgba(0, 0, 0, 0.96) 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.96) 8%, rgba(0, 0, 0, 0.96) 92%, transparent);
+  }
+
+  .equipment-brands__track {
+    display: flex;
+    width: max-content;
+    animation: equipment-marquee 36s linear infinite;
+  }
+
+  .equipment-brands__group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 2rem;
+    padding-right: 2rem;
+  }
+
+  .equipment-brands__logo {
+    display: flex;
+    height: 3rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .equipment-brands__logo img {
+    height: 1.5rem;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+    opacity: 0.85;
+    transition: opacity 200ms ease-out;
+  }
+
+  .equipment-brands__logo img:hover {
+    opacity: 1;
+  }
+
+  @keyframes equipment-marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .equipment-brands__track {
+      animation-duration: 72s;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .equipment-brands__title {
+      font-size: 1.5rem;
+    }
+
+    .equipment-brands__group {
+      gap: 2.5rem;
+      padding-right: 2.5rem;
+    }
+
+    .equipment-brands__logo {
+      height: 3.5rem;
+    }
+
+    .equipment-brands__logo img {
+      height: 1.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .equipment-brands__title {
+      font-size: 1.625rem;
+    }
+
+    .equipment-brands__group {
+      gap: 3rem;
+      padding-right: 3rem;
+    }
+
+    .equipment-brands__logo {
+      height: 4rem;
+    }
+
+    .equipment-brands__logo img {
+      height: 2.25rem;
+    }
+  }
+</style>
