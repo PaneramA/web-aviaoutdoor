@@ -65,7 +65,7 @@ const benefitIcons = {
             width="1360"
             height="640"
             class="h-[250px] w-full object-cover sm:h-[300px] lg:h-[320px]"
-            loading="lazy"
+            loading="eager"
             decoding="async"
           />
         </div>
@@ -78,7 +78,7 @@ const benefitIcons = {
           width="1280"
           height="1520"
           class="trail-visual__image"
-          loading="lazy"
+          loading="eager"
           decoding="async"
         />
       </figure>
@@ -112,22 +112,19 @@ const benefitIcons = {
 
   .trail-visual {
     position: relative;
-    aspect-ratio: 16 / 19;
     width: 100%;
     max-width: 640px;
     margin-top: 2.75rem;
     margin-left: auto;
     margin-right: 0;
-    overflow: hidden;
+    overflow: visible;
     justify-self: end;
   }
 
   .trail-visual__image {
-    height: 100%;
+    height: auto;
     width: 100%;
     object-fit: contain;
-    transform: translateX(4.25%) scale(1.08);
-    transform-origin: center;
   }
 
   @media (min-width: 640px) {
@@ -149,8 +146,8 @@ const benefitIcons = {
     }
 
     .trail-visual {
-      max-width: 620px;
-      margin-top: 0.5rem;
+      max-width: 680px;
+      margin-top: 0;
       margin-inline: auto;
       justify-self: center;
     }
@@ -163,6 +160,7 @@ const benefitIcons = {
 
     .trail-visual {
       max-width: 100%;
+      margin-top: -0.5rem;
     }
   }
 </style>

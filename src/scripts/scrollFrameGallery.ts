@@ -14,7 +14,6 @@ export function setupScrollFrameGallery() {
   root.dataset.scrollFrameGalleryInitialized = "true";
 
   const rows = Array.from(root.querySelectorAll<HTMLElement>("[data-scroll-frame-row]"));
-  const images = Array.from(root.querySelectorAll<HTMLImageElement>(".scroll-frame-gallery__image"));
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const compactViewport = window.matchMedia("(max-width: 767px)");
   let context: gsap.Context | null = null;
@@ -29,14 +28,6 @@ export function setupScrollFrameGallery() {
   const getTravel = (row: HTMLElement) => {
     const rowWidth = Math.max(row.scrollWidth, row.getBoundingClientRect().width);
     return Math.max(rowWidth - viewport.clientWidth, 0);
-  };
-
-  const preloadImages = () => {
-    images.forEach((image) => {
-      const preloader = new Image();
-      preloader.decoding = "async";
-      preloader.src = image.currentSrc || image.src;
-    });
   };
 
   const removeRenderTicker = () => {
@@ -129,22 +120,6 @@ export function setupScrollFrameGallery() {
     window.clearTimeout(rebuildTimeout);
     rebuildTimeout = window.setTimeout(build, 80);
   };
-
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          preloadImages();
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "1200px 0px" },
-    );
-
-    observer.observe(root);
-  } else {
-    window.setTimeout(preloadImages, 1200);
-  }
 
   requestAnimationFrame(() => {
     requestAnimationFrame(build);

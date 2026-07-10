@@ -35,7 +35,6 @@ const topFrames = [
     src: "/images/scroll-frame-gallery/gallery-04.webp",
     alt: "Peserta berfoto di depan tenda outdoor",
     position: "center 58%",
-    scale: 1.34,
   },
   {
     size: "panorama",
@@ -81,10 +80,9 @@ const bottomFrames = [
     src: "/images/scroll-frame-gallery/gallery-06.webp",
     alt: "Peserta beraktivitas air dengan pelampung",
     position: "center 54%",
-    scale: 1.24,
   },
   {
-    size: "panorama",
+    size: "wide",
     src: "/images/scroll-frame-gallery/gallery-05.webp",
     alt: "Area camping dengan tenda dan kendaraan di pegunungan",
     position: "center 58%",
@@ -108,28 +106,10 @@ const bottomFrames = [
     position: "center 58%",
   },
   {
-    size: "panorama",
+    size: "balanced",
     src: "/images/scroll-frame-gallery/gallery-18.webp",
     alt: "Siswa berkumpul di area camping dengan deretan tenda biru",
     position: "center 54%",
-  },
-  {
-    size: "wide",
-    src: "/images/scroll-frame-gallery/gallery-17.webp",
-    alt: "Keluarga dan komunitas menikmati camping bersama di antara tenda orange",
-    position: "center 58%",
-  },
-  {
-    size: "panorama",
-    src: "/images/scroll-frame-gallery/gallery-16.webp",
-    alt: "Deretan tenda camping di lapangan rumput saat sore hari",
-    position: "center 52%",
-  },
-  {
-    size: "wide",
-    src: "/images/scroll-frame-gallery/gallery-05.webp",
-    alt: "Area camping dengan tenda dan kendaraan di pegunungan",
-    position: "center 58%",
   },
 ];
 ---
@@ -156,9 +136,9 @@ const bottomFrames = [
                       alt={frame.alt}
                       class="scroll-frame-gallery__image"
                       style={`object-position: ${frame.position ?? "center center"}; --image-scale: ${frame.scale ?? 1};`}
-                      loading={index < 2 ? "eager" : "lazy"}
+                      loading="eager"
                       decoding="async"
-                      fetchpriority={index < 2 ? "low" : "auto"}
+                      fetchpriority="low"
                     />
                   ) : (
                     <span class="scroll-frame-gallery__icon" aria-hidden="true">
@@ -191,9 +171,9 @@ const bottomFrames = [
                       alt={frame.alt}
                       class="scroll-frame-gallery__image"
                       style={`object-position: ${frame.position ?? "center center"}; --image-scale: ${frame.scale ?? 1};`}
-                      loading={index < 2 ? "eager" : "lazy"}
+                      loading="eager"
                       decoding="async"
-                      fetchpriority={index < 2 ? "low" : "auto"}
+                      fetchpriority="low"
                     />
                   ) : (
                     <span class="scroll-frame-gallery__icon" aria-hidden="true">
@@ -327,6 +307,10 @@ const bottomFrames = [
     aspect-ratio: 2.16 / 1;
   }
 
+  .scroll-frame-gallery__frame--balanced {
+    aspect-ratio: 2 / 1;
+  }
+
   .scroll-frame-gallery__image {
     position: absolute;
     inset: 0;
@@ -440,6 +424,10 @@ const bottomFrames = [
 
     .scroll-frame-gallery__frame--panorama {
       aspect-ratio: 1.86 / 1;
+    }
+
+    .scroll-frame-gallery__frame--balanced {
+      aspect-ratio: 2 / 1;
     }
 
     .scroll-frame-gallery__icon {
