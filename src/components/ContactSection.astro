@@ -1,5 +1,8 @@
 ---
 const mapsUrl = "https://maps.app.goo.gl/Mdm29S5L1sf4Rc239";
+const instagramUrl = "https://www.instagram.com/avia_outdoor/";
+const whatsappUrl = "https://wa.me/6287861488788";
+const emailAddress = "aviaoutdoor2022@gmail.com";
 
 const footerLinks = [
   { href: "#solutions", label: "Solutions" },
@@ -38,28 +41,42 @@ const footerLinks = [
         </nav>
       </div>
 
-      <div class="flex gap-3 sm:justify-end">
-        <a class="footer-contact__social footer-contact__social--instagram" href="#contact" aria-label="Instagram">
+      <div class="footer-contact__social-list sm:justify-end">
+        <a
+          class="footer-contact__social footer-contact__social--instagram"
+          href={instagramUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Instagram Avia Outdoor"
+        >
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <rect x="5" y="5" width="14" height="14" rx="4"></rect>
             <circle cx="12" cy="12" r="3.2"></circle>
             <path d="M16.6 7.6h.01"></path>
           </svg>
         </a>
-        <a class="footer-contact__social footer-contact__social--whatsapp" href="#contact" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M5.5 18.5 4.35 22l3.65-1A9.2 9.2 0 1 0 5.5 18.5Z"></path>
-            <path d="M8.9 8.55c.18-.42.38-.44.7-.44h.54c.22 0 .5.04.68.5l.76 1.82c.13.31.1.58-.12.85l-.48.58c-.18.22-.2.42-.04.68.64 1.05 1.56 1.94 2.68 2.58.26.15.48.13.7-.08l.64-.62c.24-.23.5-.29.82-.14l1.88.88c.38.18.48.42.44.74-.08.75-.68 1.5-1.34 1.69-1.02.29-3.48-.14-5.7-2.26-2.15-2.05-2.9-4.38-2.66-5.46.1-.44.32-.94.5-1.32Z"></path>
+        <a
+          class="footer-contact__social footer-contact__social--whatsapp"
+          href={whatsappUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="WhatsApp Avia Outdoor"
+        >
+          <svg viewBox="-0.6 -0.6 17.2 17.2" aria-hidden="true">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.607ZM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592Zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.066-.315-.099-.445.099-.133.197-.514.646-.627.775-.116.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.101-1.372-.116-.198-.013-.305.086-.404.09-.09.197-.232.296-.348.1-.116.133-.198.198-.33.066-.133.033-.25-.017-.348-.05-.099-.445-1.075-.612-1.47-.161-.389-.323-.336-.445-.342-.116-.007-.25-.007-.38-.007a.729.729 0 0 0-.529.25c-.182.198-.695.679-.695 1.653s.712 1.916.81 2.049c.099.133 1.397 2.132 3.386 2.992.473.205.842.328 1.129.421.475.151.906.129 1.248.078.38-.058 1.171-.48 1.336-.943.165-.464.165-.86.116-.943-.05-.082-.182-.132-.38-.23Z"></path>
           </svg>
         </a>
-        <a class="footer-contact__social footer-contact__social--maps" href={mapsUrl} target="_blank" rel="noreferrer" aria-label="Google Maps">
+        <a
+          class="footer-contact__social footer-contact__social--gmail"
+          href={`mailto:${emailAddress}`}
+          aria-label={`Kirim email ke ${emailAddress}`}
+        >
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path class="map-green" d="M4 5.4A1.4 1.4 0 0 1 5.4 4H11v8.6L4 19.5V5.4Z"></path>
-            <path class="map-yellow" d="M11 4h4.1L20 8.9v2.7l-9 1V4Z"></path>
-            <path class="map-blue" d="m4 19.5 7-6.9 4.8 7.4H5.4A1.4 1.4 0 0 1 4 18.6v.9Z"></path>
-            <path class="map-gray" d="m11 12.6 9-1V18.6a1.4 1.4 0 0 1-1.4 1.4h-2.8L11 12.6Z"></path>
-            <path class="map-pin" d="M17 4.1a4.3 4.3 0 0 0-4.3 4.3c0 3.4 4.3 7.8 4.3 7.8s4.3-4.4 4.3-7.8A4.3 4.3 0 0 0 17 4.1Z"></path>
-            <circle class="map-pin-hole" cx="17" cy="8.4" r="1.35"></circle>
+            <path class="gmail-blue" d="M2.5 5.65v11.8c0 .86.72 1.55 1.6 1.55h3V9.1L2.5 5.65Z"></path>
+            <path class="gmail-green" d="M16.9 9.1V19h3c.88 0 1.6-.69 1.6-1.55V5.65L16.9 9.1Z"></path>
+            <path class="gmail-yellow" d="m16.9 9.1 4.6-3.45V4.9c0-1.92-2.22-3.02-3.78-1.87l-.82.61V9.1Z"></path>
+            <path class="gmail-red" d="M7.1 9.1V3.64L12 7.32l4.9-3.68V9.1L12 12.78 7.1 9.1Z"></path>
+            <path class="gmail-red-dark" d="M2.5 5.65 7.1 9.1V3.64l-.82-.61C4.72 1.88 2.5 2.98 2.5 4.9v.75Z"></path>
           </svg>
         </a>
       </div>
@@ -110,8 +127,16 @@ const footerLinks = [
     outline: none;
   }
 
+  .footer-contact__social-list {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
   .footer-contact__social {
     display: inline-flex;
+    box-sizing: border-box;
+    flex: 0 0 2.15rem;
     height: 2.15rem;
     width: 2.15rem;
     align-items: center;
@@ -131,7 +156,10 @@ const footerLinks = [
   }
 
   .footer-contact__social svg {
+    display: block;
+    flex: none;
     height: 1.28rem;
+    overflow: visible;
     width: 1.28rem;
     fill: none;
     stroke: currentColor;
@@ -155,53 +183,40 @@ const footerLinks = [
   }
 
   .footer-contact__social--whatsapp svg {
-    fill: #25d366;
-    stroke: #fff;
-    stroke-width: 1.45;
-  }
-
-  .footer-contact__social--whatsapp svg path:first-child {
-    fill: none;
-    stroke-width: 1.8;
-  }
-
-  .footer-contact__social--whatsapp svg path:last-child {
     fill: #fff;
     stroke: none;
+    transform: none;
   }
 
-  .footer-contact__social--maps {
+  .footer-contact__social--gmail {
     background: #fff;
   }
 
-  .footer-contact__social--maps svg {
-    height: 1.45rem;
-    width: 1.45rem;
+  .footer-contact__social--gmail svg {
+    height: 1.42rem;
+    width: 1.42rem;
+    fill: none;
     stroke: none;
   }
 
-  .footer-contact__social--maps .map-green {
-    fill: #00a86b;
+  .footer-contact__social--gmail .gmail-blue {
+    fill: #4285f4;
   }
 
-  .footer-contact__social--maps .map-yellow {
+  .footer-contact__social--gmail .gmail-green {
+    fill: #34a853;
+  }
+
+  .footer-contact__social--gmail .gmail-yellow {
     fill: #fbbc04;
   }
 
-  .footer-contact__social--maps .map-blue {
-    fill: #1a73e8;
+  .footer-contact__social--gmail .gmail-red {
+    fill: #ea4335;
   }
 
-  .footer-contact__social--maps .map-gray {
-    fill: #d9d9d9;
-  }
-
-  .footer-contact__social--maps .map-pin {
-    fill: #ff3b30;
-  }
-
-  .footer-contact__social--maps .map-pin-hole {
-    fill: #9e1b1b;
+  .footer-contact__social--gmail .gmail-red-dark {
+    fill: #c5221f;
   }
 
   @media (min-width: 640px) {
